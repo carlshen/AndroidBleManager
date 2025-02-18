@@ -638,7 +638,19 @@ public class MainActivity extends ToolbarActivity
      * @return
      */
     public boolean checkPermission(){
-        if (Build.VERSION.SDK_INT >= 23){
+        if (Build.VERSION.SDK_INT >= 31){
+            permissionList = new String[]{Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN,
+                    Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.BLUETOOTH_CONNECT,
+                    Manifest.permission.BLUETOOTH_ADVERTISE,
+                    Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            boolean hasPermission = PermissionUtils.hasSelfPermissions(this, permissionList);
+            MainActivityPermissionsDispatcher.showCheckPermissionStateWithCheck(this);
+            if (!LocationUtils.isGpsProviderEnabled(this)){
+                return false;
+            }
+            return hasPermission;
+        } else if (Build.VERSION.SDK_INT >= 23){
             boolean hasPermission = PermissionUtils.hasSelfPermissions(this, permissionList);
             MainActivityPermissionsDispatcher.showCheckPermissionStateWithCheck(this);
             if (!LocationUtils.isGpsProviderEnabled(this)){

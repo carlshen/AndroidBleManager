@@ -5,6 +5,11 @@
 /captures
 
 /.idea
+/.idea/compiler.xml
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/runConfigurations.xml
 /.idea/workspace.xml
 /.idea/libraries
 # Built application files
